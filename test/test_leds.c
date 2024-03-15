@@ -106,5 +106,14 @@ void test_all_leds_turn_on(void) {
     TEST_ASSERT_EQUAL_UINT16(0xFF, leds_port);
 }
 
+/// @brief Apagar todos los LEDs (prendidos previamente) y verificar que al consultar el estado del
+/// puerto sea 0x00
+void test_all_leds_turn_off(void) {
+
+    leds_turn_on_all();
+    leds_turn_off_all();
+    TEST_ASSERT_EQUAL_UINT16(0x00, leds_port);
+}
+
 /* === Public function implementation ========================================================== */
 /* === End of documentation ==================================================================== */

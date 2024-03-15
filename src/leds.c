@@ -63,4 +63,8 @@ void leds_turn_on_all(void) {
     *led_port = 0xFF;
 }
 
+void leds_turn_off_all(void) {
+    *led_port = 0x00;
+}
+
 /* === End of documentation ==================================================================== */
