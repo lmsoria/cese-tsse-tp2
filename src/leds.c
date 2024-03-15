@@ -19,13 +19,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 SPDX-License-Identifier: MIT
 *************************************************************************************************/
 
-/** @file test_leds.c
- ** @brief Batería de Unit Tests para la API de manejo de LEDs.
+/** @file leds.c
+ ** @brief Capa de abstracción para controlar LEDs (implementación)
  **/
 
-/* === Headers files inclusions ================================================================ */
-
-#include <unity.h>
+/* === Headers files inclusions =============================================================== */
 
 #include "leds.h"
 
@@ -36,14 +34,10 @@ SPDX-License-Identifier: MIT
 /* === Public variable definitions ============================================================= */
 /* === Private variable definitions ============================================================ */
 /* === Private function implementation ========================================================= */
+/* === Public function implementation ========================================================== */
 
-/// @brief Al iniciar el controlador todos los bits de los LEDs deben quedar en cero,
-///        sin importar el estado anterior.
-void test_initial_state(void) {
-    uint16_t leds_port = 0xFF;
-    leds_init(&leds_port);
-    TEST_ASSERT_EQUAL_UINT16(0x00, leds_port);
+void leds_init(uint16_t * port) {
+    *port = 0x00;
 }
 
-/* === Public function implementation ========================================================== */
 /* === End of documentation ==================================================================== */

@@ -19,31 +19,31 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 SPDX-License-Identifier: MIT
 *************************************************************************************************/
 
-/** @file test_leds.c
- ** @brief Batería de Unit Tests para la API de manejo de LEDs.
+#pragma once
+
+/** @file leds.h
+ ** @brief Capa de abstracción para controlar LEDs
  **/
 
 /* === Headers files inclusions ================================================================ */
 
-#include <unity.h>
+#include <stdint.h>
 
-#include "leds.h"
+/* === Cabecera C++ ============================================================================ */
 
-/* === Macros definitions ====================================================================== */
-/* === Private data type declarations ========================================================== */
-/* === Private variable declarations =========================================================== */
-/* === Private function declarations =========================================================== */
-/* === Public variable definitions ============================================================= */
-/* === Private variable definitions ============================================================ */
-/* === Private function implementation ========================================================= */
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-/// @brief Al iniciar el controlador todos los bits de los LEDs deben quedar en cero,
-///        sin importar el estado anterior.
-void test_initial_state(void) {
-    uint16_t leds_port = 0xFF;
-    leds_init(&leds_port);
-    TEST_ASSERT_EQUAL_UINT16(0x00, leds_port);
-}
+/* === Public macros definitions =============================================================== */
+/* === Public data type declarations =========================================================== */
+/* === Public variable declarations ============================================================ */
+/* === Public function declarations ============================================================ */
 
-/* === Public function implementation ========================================================== */
+void leds_init(uint16_t * port);
+
 /* === End of documentation ==================================================================== */
+
+#ifdef __cplusplus
+}
+#endif
