@@ -28,6 +28,9 @@ SPDX-License-Identifier: MIT
 #include "leds.h"
 
 /* === Macros definitions ====================================================================== */
+
+#define LED_TO_BIT(led) (1 << led - 1)
+
 /* === Private data type declarations ========================================================== */
 
 static uint16_t * led_port;
@@ -45,11 +48,11 @@ void leds_init(uint16_t * port) {
 }
 
 void leds_turn_on_single(uint16_t led) {
-    *led_port |= (1 << led - 1);
+    *led_port |= LED_TO_BIT(led);
 }
 
 void leds_turn_off_single(uint16_t led) {
-    *led_port &= ~(1 << led - 1);
+    *led_port &= ~LED_TO_BIT(led);
 }
 
 /* === End of documentation ==================================================================== */
