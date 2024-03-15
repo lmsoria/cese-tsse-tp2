@@ -38,6 +38,10 @@ static uint16_t leds_port = 0xFF;
 /* === Private variable definitions ============================================================ */
 /* === Private function implementation ========================================================= */
 
+void setUp(void) {
+    leds_init(&leds_port);
+}
+
 /// @brief Al iniciar el controlador todos los bits de los LEDs deben quedar en cero,
 ///        sin importar el estado anterior.
 void test_initial_state(void) {
@@ -50,9 +54,7 @@ void test_initial_state(void) {
 ///        mientras el resto de bits está en bajo.
 void test_single_led_on(void) {
     static const int LED = 3;
-    uint16_t leds_port = 0xFF;
 
-    leds_init(&leds_port);
     leds_turn_on_single(LED);
 
     TEST_ASSERT_BIT_HIGH(LED - 1, leds_port);
@@ -63,9 +65,7 @@ void test_single_led_on(void) {
 ///        mientras el resto de bits no cambia.
 void test_single_led_off(void) {
     static const int LED = 3;
-    uint16_t leds_port = 0xFF;
 
-    leds_init(&leds_port);
     leds_turn_on_single(LED);
     leds_turn_off_single(LED);
     TEST_ASSERT_EQUAL_UINT16(0x00, leds_port);
