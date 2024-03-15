@@ -45,11 +45,11 @@ void leds_init(uint16_t * port) {
 }
 
 void leds_turn_on_single(uint16_t led) {
-    *led_port = 0x04;
+    *led_port |= (1 << led - 1);
 }
 
 void leds_turn_off_single(uint16_t led) {
-    *led_port = 0x00;
+    *led_port &= ~(1 << led - 1);
 }
 
 /* === End of documentation ==================================================================== */

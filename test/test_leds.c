@@ -71,5 +71,24 @@ void test_single_led_off(void) {
     TEST_ASSERT_EQUAL_UINT16(0x00, leds_port);
 }
 
+// Apagar un led prendido y ver que efectivamente se apaga y que el resto no cambia.
+
+/// @brief Prender el LED5 dos veces, prender el LED7 una vez, apagar el LED5 una vez y apagar el
+/// LED9 dos veces.
+///        Se espera que el único LED prendido al final del test sea el LED7
+void test_multiple_leds_on_and_off(void) {
+    static const int LED5 = 5;
+    static const int LED7 = 7;
+    static const int LED9 = 9;
+    leds_turn_on_single(LED5);
+    leds_turn_on_single(LED7);
+    leds_turn_on_single(LED5);
+    leds_turn_off_single(LED5);
+    leds_turn_off_single(LED9);
+    leds_turn_off_single(LED9);
+
+    TEST_ASSERT_EQUAL_UINT16((1 << (LED7 - 1)), leds_port);
+}
+
 /* === Public function implementation ========================================================== */
 /* === End of documentation ==================================================================== */
