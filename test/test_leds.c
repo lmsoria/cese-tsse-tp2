@@ -90,5 +90,14 @@ void test_multiple_leds_on_and_off(void) {
     TEST_ASSERT_EQUAL_UINT16((1 << (LED7 - 1)), leds_port);
 }
 
+/// @brief Con todos los LEDs apagados prender el LED3, y verificar que al consultar
+///        el estado del mismo se encuentre prendido
+void test_single_led_get_status_on(void) {
+    static const int LED = 3;
+
+    leds_turn_on_single(LED);
+    TEST_ASSERT_TRUE(leds_get_status_single(LED));
+}
+
 /* === Public function implementation ========================================================== */
 /* === End of documentation ==================================================================== */

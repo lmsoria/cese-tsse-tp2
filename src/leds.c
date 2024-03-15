@@ -55,4 +55,8 @@ void leds_turn_off_single(uint16_t led) {
     *led_port &= ~LED_TO_BIT(led);
 }
 
+bool leds_get_status_single(uint16_t led) {
+    return (*led_port & LED_TO_BIT(led)) != 0;
+}
+
 /* === End of documentation ==================================================================== */
