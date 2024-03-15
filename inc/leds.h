@@ -45,6 +45,7 @@ void leds_init(uint16_t * port);
 void leds_turn_on_single(uint16_t led);
 void leds_turn_off_single(uint16_t led);
 bool leds_get_status_single(uint16_t led);
+void leds_turn_on_all(void);
 
 /* === End of documentation ==================================================================== */
 

@@ -99,5 +99,12 @@ void test_single_led_get_status_on(void) {
     TEST_ASSERT_TRUE(leds_get_status_single(LED));
 }
 
+/// @brief Prender todos los LEDs y verificar que al consultar el estado del puerto sea 0xFF
+void test_all_leds_turn_on(void) {
+
+    leds_turn_on_all();
+    TEST_ASSERT_EQUAL_UINT16(0xFF, leds_port);
+}
+
 /* === Public function implementation ========================================================== */
 /* === End of documentation ==================================================================== */

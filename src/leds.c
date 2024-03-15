@@ -59,4 +59,8 @@ bool leds_get_status_single(uint16_t led) {
     return (*led_port & LED_TO_BIT(led)) != 0;
 }
 
+void leds_turn_on_all(void) {
+    *led_port = 0xFF;
+}
+
 /* === End of documentation ==================================================================== */
