@@ -59,5 +59,17 @@ void test_single_led_on(void) {
     TEST_ASSERT_BITS_LOW(~(1 << (LED - 1)), leds_port);
 }
 
+/// @brief Apagar el LED3 (prendido previamente), y verificar que el bit 3 está en bajo
+///        mientras el resto de bits no cambia.
+void test_single_led_off(void) {
+    static const int LED = 3;
+    uint16_t leds_port = 0xFF;
+
+    leds_init(&leds_port);
+    leds_turn_on_single(LED);
+    leds_turn_off_single(LED);
+    TEST_ASSERT_EQUAL_UINT16(0x00, leds_port);
+}
+
 /* === Public function implementation ========================================================== */
 /* === End of documentation ==================================================================== */

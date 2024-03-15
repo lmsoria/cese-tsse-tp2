@@ -48,4 +48,8 @@ void leds_turn_on_single(uint16_t led) {
     *led_port = 0x04;
 }
 
+void leds_turn_off_single(uint16_t led) {
+    *led_port = 0x00;
+}
+
 /* === End of documentation ==================================================================== */
