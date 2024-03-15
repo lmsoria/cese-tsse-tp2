@@ -32,6 +32,7 @@ SPDX-License-Identifier: MIT
 /* === Macros definitions ====================================================================== */
 /* === Private data type declarations ========================================================== */
 /* === Private variable declarations =========================================================== */
+static uint16_t leds_port = 0xFF;
 /* === Private function declarations =========================================================== */
 /* === Public variable definitions ============================================================= */
 /* === Private variable definitions ============================================================ */
@@ -43,6 +44,19 @@ void test_initial_state(void) {
     uint16_t leds_port = 0xFF;
     leds_init(&leds_port);
     TEST_ASSERT_EQUAL_UINT16(0x00, leds_port);
+}
+
+/// @brief Con todos los LEDs apagados prender el LED3, y verificar que el bit 3 está en alto
+///        mientras el resto de bits está en bajo.
+void test_single_led_on(void) {
+    static const int LED = 3;
+    uint16_t leds_port = 0xFF;
+
+    leds_init(&leds_port);
+    leds_turn_on_single(LED);
+
+    TEST_ASSERT_BIT_HIGH(LED - 1, leds_port);
+    TEST_ASSERT_BITS_LOW(~(1 << (LED - 1)), leds_port);
 }
 
 /* === Public function implementation ========================================================== */

@@ -29,6 +29,9 @@ SPDX-License-Identifier: MIT
 
 /* === Macros definitions ====================================================================== */
 /* === Private data type declarations ========================================================== */
+
+static uint16_t * led_port;
+
 /* === Private variable declarations =========================================================== */
 /* === Private function declarations =========================================================== */
 /* === Public variable definitions ============================================================= */
@@ -37,7 +40,12 @@ SPDX-License-Identifier: MIT
 /* === Public function implementation ========================================================== */
 
 void leds_init(uint16_t * port) {
-    *port = 0x00;
+    led_port = port;
+    *led_port = 0x00;
+}
+
+void leds_turn_on_single(uint16_t led) {
+    *led_port = 0x04;
 }
 
 /* === End of documentation ==================================================================== */
