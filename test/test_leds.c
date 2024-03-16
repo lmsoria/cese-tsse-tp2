@@ -46,7 +46,7 @@ void setUp(void) {
 }
 
 /// @brief Al iniciar el controlador todos los bits de los LEDs deben quedar en cero,
-///        sin importar el estado anterior.
+///  sin importar el estado anterior.
 void test_initial_state(void) {
     uint16_t leds_port = 0xFF;
 
@@ -55,7 +55,7 @@ void test_initial_state(void) {
 }
 
 /// @brief Con todos los LEDs apagados prender el LED3, y verificar que el bit 3 está en alto
-///        mientras el resto de bits está en bajo.
+/// mientras el resto de bits está en bajo.
 void test_single_led_on(void) {
     static const int LED = 3;
 
@@ -65,7 +65,7 @@ void test_single_led_on(void) {
 }
 
 /// @brief Apagar el LED3 (prendido previamente), y verificar que el bit 3 está en bajo
-///        mientras el resto de bits no cambia.
+/// mientras el resto de bits no cambia.
 void test_single_led_off(void) {
     static const int LED = 3;
 
@@ -75,11 +75,9 @@ void test_single_led_off(void) {
     TEST_ASSERT_EQUAL_UINT16(0x00, leds_port);
 }
 
-// Apagar un led prendido y ver que efectivamente se apaga y que el resto no cambia.
-
 /// @brief Prender el LED5 dos veces, prender el LED7 una vez, apagar el LED5 una vez y apagar el
 /// LED9 dos veces.
-///        Se espera que el único LED prendido al final del test sea el LED7
+/// Se espera que el único LED prendido al final del test sea el LED7
 void test_multiple_leds_on_and_off(void) {
     static const int LED5 = 5;
     static const int LED7 = 7;
@@ -95,7 +93,7 @@ void test_multiple_leds_on_and_off(void) {
 }
 
 /// @brief Con todos los LEDs apagados prender el LED3, y verificar que al consultar
-///        el estado del mismo se encuentre prendido
+/// el estado del mismo se encuentre prendido
 void test_single_led_get_status_on(void) {
     static const int LED = 3;
 
