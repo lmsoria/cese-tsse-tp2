@@ -67,7 +67,8 @@ void test_single_led_off(void) {
     static const int LED = 3;
 
     leds_turn_on_single(LED);
-    leds_turn_off_single(LED);
+
+    TEST_ASSERT_EQUAL_INT(0x00, leds_turn_off_single(LED));
     TEST_ASSERT_EQUAL_UINT16(0x00, leds_port);
 }
 
