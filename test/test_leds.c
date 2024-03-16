@@ -103,7 +103,7 @@ void test_single_led_get_status_on(void) {
 void test_all_leds_turn_on(void) {
 
     leds_turn_on_all();
-    TEST_ASSERT_EQUAL_UINT16(0xFF, leds_port);
+    TEST_ASSERT_EQUAL_UINT16(0xFF, leds_get_status_all());
 }
 
 /// @brief Apagar todos los LEDs (prendidos previamente) y verificar que al consultar el estado del
@@ -112,7 +112,7 @@ void test_all_leds_turn_off(void) {
 
     leds_turn_on_all();
     leds_turn_off_all();
-    TEST_ASSERT_EQUAL_UINT16(0x00, leds_port);
+    TEST_ASSERT_EQUAL_UINT16(0x00, leds_get_status_all());
 }
 
 /* === Public function implementation ========================================================== */

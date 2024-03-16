@@ -67,4 +67,8 @@ void leds_turn_off_all(void) {
     *led_port = 0x00;
 }
 
+uint16_t leds_get_status_all(void) {
+    return *led_port;
+}
+
 /* === End of documentation ==================================================================== */
