@@ -43,9 +43,10 @@ static uint16_t * led_port;
 /* === Private function implementation ========================================================= */
 /* === Public function implementation ========================================================== */
 
-void leds_init(uint16_t * port) {
+int leds_init(uint16_t * port) {
     led_port = port;
     *led_port = 0x00;
+    return 0;
 }
 
 void leds_deinit(void) {

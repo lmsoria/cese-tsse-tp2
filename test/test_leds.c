@@ -46,7 +46,8 @@ void setUp(void) {
 ///        sin importar el estado anterior.
 void test_initial_state(void) {
     uint16_t leds_port = 0xFF;
-    leds_init(&leds_port);
+
+    TEST_ASSERT_EQUAL_INT(0x00, leds_init(&leds_port));
     TEST_ASSERT_EQUAL_UINT16(0x00, leds_port);
 }
 
