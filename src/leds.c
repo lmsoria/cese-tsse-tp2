@@ -54,9 +54,12 @@ void leds_deinit(void) {
     led_port = NULL;
 }
 
-void leds_turn_on_single(uint16_t led) {
+int leds_turn_on_single(uint16_t led) {
     if (led_port) {
         *led_port |= LED_TO_BIT(led);
+        return 0;
+    } else {
+        return -1;
     }
 }
 

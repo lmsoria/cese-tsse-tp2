@@ -56,8 +56,7 @@ void test_initial_state(void) {
 void test_single_led_on(void) {
     static const int LED = 3;
 
-    leds_turn_on_single(LED);
-
+    TEST_ASSERT_EQUAL_INT(0x00, leds_turn_on_single(LED));
     TEST_ASSERT_BIT_HIGH(LED - 1, leds_port);
     TEST_ASSERT_BITS_LOW(~(1 << (LED - 1)), leds_port);
 }
