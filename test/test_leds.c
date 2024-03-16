@@ -97,7 +97,7 @@ void test_single_led_get_status_on(void) {
     static const int LED = 3;
 
     TEST_ASSERT_EQUAL_INT(0, leds_turn_on_single(LED));
-    TEST_ASSERT_TRUE(leds_get_status_single(LED));
+    TEST_ASSERT_EQUAL_INT(1, leds_get_status_single(LED));
 }
 
 /// @brief Prender todos los LEDs y verificar que al consultar el estado del puerto sea 0xFF
@@ -124,6 +124,16 @@ void test_uninitialized_led_port(void) {
 
     TEST_ASSERT_EQUAL_INT(-1, leds_turn_on_all());
     TEST_ASSERT_EQUAL_UINT16(0x00, leds_port);
+}
+
+/// @brief Deinicializar el puerto de los LEDs, y consultar el estado del LED3.
+/// El programa no debería sufrir una excepción y la función `leds_get_status_single()` debe
+/// retornar -1.
+void test_uninitialized_led_port_get_single_value(void) {
+    static const int LED = 3;
+    leds_deinit();
+
+    TEST_ASSERT_EQUAL_INT(-1, leds_get_status_single(LED));
 }
 
 /* === Public function implementation ========================================================== */
