@@ -32,11 +32,14 @@ SPDX-License-Identifier: MIT
 /* === Macros definitions ====================================================================== */
 /* === Private data type declarations ========================================================== */
 /* === Private variable declarations =========================================================== */
+
 static uint16_t leds_port = 0xFF;
+
 /* === Private function declarations =========================================================== */
 /* === Public variable definitions ============================================================= */
 /* === Private variable definitions ============================================================ */
 /* === Private function implementation ========================================================= */
+/* === Public function implementation ========================================================== */
 
 void setUp(void) {
     leds_init(&leds_port);
@@ -136,5 +139,4 @@ void test_uninitialized_led_port_get_single_value(void) {
     TEST_ASSERT_EQUAL_INT(-1, leds_get_status_single(LED));
 }
 
-/* === Public function implementation ========================================================== */
 /* === End of documentation ==================================================================== */
