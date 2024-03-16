@@ -25,6 +25,7 @@ SPDX-License-Identifier: MIT
 
 /* === Headers files inclusions =============================================================== */
 
+#include <stddef.h>
 #include "leds.h"
 
 /* === Macros definitions ====================================================================== */
@@ -47,28 +48,46 @@ void leds_init(uint16_t * port) {
     *led_port = 0x00;
 }
 
+void leds_deinit(void) {
+    *led_port = 0x00;
+    led_port = NULL;
+}
+
 void leds_turn_on_single(uint16_t led) {
-    *led_port |= LED_TO_BIT(led);
+    if (led_port) {
+        *led_port |= LED_TO_BIT(led);
+    }
 }
 
 void leds_turn_off_single(uint16_t led) {
-    *led_port &= ~LED_TO_BIT(led);
+    if (led_port) {
+        *led_port &= ~LED_TO_BIT(led);
+    }
 }
 
 bool leds_get_status_single(uint16_t led) {
-    return (*led_port & LED_TO_BIT(led)) != 0;
+    if (led_port) {
+        return (*led_port & LED_TO_BIT(led)) != 0;
+    }
+    return false;
 }
 
 void leds_turn_on_all(void) {
-    *led_port = 0xFF;
+    if (led_port) {
+        *led_port = 0xFF;
+    }
 }
 
 void leds_turn_off_all(void) {
-    *led_port = 0x00;
+    if (led_port) {
+        *led_port = 0x00;
+    }
 }
 
 uint16_t leds_get_status_all(void) {
-    return *led_port;
+    if (led_port) {
+        return *led_port;
+    }
 }
 
 /* === End of documentation ==================================================================== */

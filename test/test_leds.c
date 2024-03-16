@@ -115,5 +115,15 @@ void test_all_leds_turn_off(void) {
     TEST_ASSERT_EQUAL_UINT16(0x00, leds_get_status_all());
 }
 
+/// @brief Deinicializar el puerto de los LEDs, y prender todos los LEDs.
+/// El programa no debería sufrir una excepción y seguir su funcionamiento normal.
+/// Por otro lado, el valor de `leds_port` deberá ser cero.
+void test_uninitialized_led_port(void) {
+    leds_deinit();
+    leds_turn_on_all();
+
+    TEST_ASSERT_EQUAL_UINT16(0x00, leds_port);
+}
+
 /* === Public function implementation ========================================================== */
 /* === End of documentation ==================================================================== */
