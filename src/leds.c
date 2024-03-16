@@ -33,10 +33,10 @@ SPDX-License-Identifier: MIT
 #define LED_TO_BIT(led) (1 << led - 1)
 
 /* === Private data type declarations ========================================================== */
+/* === Private variable declarations =========================================================== */
 
 static uint16_t * led_port;
 
-/* === Private variable declarations =========================================================== */
 /* === Private function declarations =========================================================== */
 /* === Public variable definitions ============================================================= */
 /* === Private variable definitions ============================================================ */
