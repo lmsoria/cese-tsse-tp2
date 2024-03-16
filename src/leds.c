@@ -72,28 +72,37 @@ int leds_turn_off_single(uint16_t led) {
     }
 }
 
-bool leds_get_status_single(uint16_t led) {
+int leds_get_status_single(uint16_t led) {
     if (led_port) {
         return (*led_port & LED_TO_BIT(led)) != 0;
+    } else {
+        return -1;
     }
-    return false;
 }
 
-void leds_turn_on_all(void) {
+int leds_turn_on_all(void) {
     if (led_port) {
         *led_port = 0xFF;
+        return 0;
+    } else {
+        return -1;
     }
 }
 
-void leds_turn_off_all(void) {
+int leds_turn_off_all(void) {
     if (led_port) {
         *led_port = 0x00;
+        return 0;
+    } else {
+        return -1;
     }
 }
 
-uint16_t leds_get_status_all(void) {
+int leds_get_status_all(void) {
     if (led_port) {
         return *led_port;
+    } else {
+        return -1;
     }
 }
 

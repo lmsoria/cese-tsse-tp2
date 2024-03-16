@@ -96,14 +96,14 @@ void test_multiple_leds_on_and_off(void) {
 void test_single_led_get_status_on(void) {
     static const int LED = 3;
 
-    leds_turn_on_single(LED);
+    TEST_ASSERT_EQUAL_INT(0, leds_turn_on_single(LED));
     TEST_ASSERT_TRUE(leds_get_status_single(LED));
 }
 
 /// @brief Prender todos los LEDs y verificar que al consultar el estado del puerto sea 0xFF
 void test_all_leds_turn_on(void) {
 
-    leds_turn_on_all();
+    TEST_ASSERT_EQUAL_INT(0, leds_turn_on_all());
     TEST_ASSERT_EQUAL_UINT16(0xFF, leds_get_status_all());
 }
 
@@ -117,12 +117,12 @@ void test_all_leds_turn_off(void) {
 }
 
 /// @brief Deinicializar el puerto de los LEDs, y prender todos los LEDs.
-/// El programa no debería sufrir una excepción y seguir su funcionamiento normal.
-/// Por otro lado, el valor de `leds_port` deberá ser cero.
+/// El programa no debería sufrir una excepción y la función debe retornar -1.
+/// Por otro lado, el valor de `leds_port` deberá continuar en cero.
 void test_uninitialized_led_port(void) {
     leds_deinit();
-    leds_turn_on_all();
 
+    TEST_ASSERT_EQUAL_INT(-1, leds_turn_on_all());
     TEST_ASSERT_EQUAL_UINT16(0x00, leds_port);
 }
 
